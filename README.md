@@ -24,7 +24,6 @@ DROP TABLE IF EXISTS WeldingRecord;
 DROP TABLE IF EXISTS WeldingRecordInfo;
 DROP TABLE IF EXISTS DimensionRecord;
 DROP TABLE IF EXISTS DimensionRecordInfo;
-DROP TABLE IF EXISTS PieceInfo;
 
 
 CREATE TABLE User(	
@@ -220,20 +219,23 @@ FOREIGN KEY (productid) REFERENCES Product(productid) ON DELETE CASCADE
 CREATE TABLE DimensionalRecordInfo(
 id INT PRIMARY KEY AUTO_INCREMENT,
 docid VARCHAR(255),
-proname VARCHAR(255),
+no INT,
 componame VARCHAR(255),
 unit VARCHAR(255),
 componum VARCHAR(255),
-drawingmun VARCHAR(255),
+drawingnum VARCHAR(255),
+rev CHAR(255),
 standard VARCHAR(255),
 qty INT,
-rev CHAR(255),
-sketch VARCHAR(255),
+sketch LONGBLOB,
 devalue1 INT,devalue2 INT,devalue3 INT,devalue4 INT,devalue5 INT,
 devalue6 INT,devalue7 INT,devalue8 INT,devalue9 INT,devalue10 INT,
 deviation1 INT,deviation2 INT,deviation3 INT,deviation4 INT,deviation5 INT,
 deviation6 INT,deviation7 INT,deviation8 INT,deviation9 INT,deviation10 INT,
+piecenum VARCHAR(255),
 cutst Boolean,
+mevalue1 INT,mevalue2 INT,mevalue3 INT,mevalue4 INT,mevalue5 INT,
+mevalue6 INT,mevalue7 INT,mevalue8 INT,mevalue9 INT,mevalue10 INT,
 wequality Boolean,
 viquality Boolean,
 evaluation Boolean,
@@ -244,14 +246,3 @@ date2 DATE,
 productid INT,
 FOREIGN KEY (productid) REFERENCES Product(productid) ON DELETE CASCADE
 );
-
-CREATE TABLE PieceInfo(
-id INT PRIMARY KEY AUTO_INCREMENT,
-docid VARCHAR(255),
-piecenum VARCHAR(255),
-mevalue1 INT,mevalue2 INT,mevalue3 INT,mevalue4 INT,mevalue5 INT,
-mevalue6 INT,mevalue7 INT,mevalue8 INT,mevalue9 INT,mevalue10 INT,
-productid INT,
-FOREIGN KEY (productid) REFERENCES Product(productid) ON DELETE CASCADE
-);
-
